@@ -45,6 +45,8 @@ class BSBI_Indexer:
                         merged_block[list(temp_dic.keys())[j]].extend(temp_dic[list(temp_dic.keys())[j]])
                     else:
                         merged_block[list(temp_dic.keys())[j]] = temp_dic[list(temp_dic.keys())[j]]
+        for i in range(len(list(temp_dic.keys()))):
+            temp_dic[list(temp_dic.keys())[i]].sort()
         with open(".\\Blocks\\MergedBlock.txt", 'w') as f:
             json.dump(merged_block, f)
 

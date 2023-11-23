@@ -17,6 +17,7 @@ eggs/
 *.iml
 *.xml
 lib/
+*.txt
 lib64/
 parts/
 sdist/

@@ -19,6 +19,9 @@ eggs/
 lib/
 *.txt
 lib64/
+*.docx
+*.pdf
+*.tmp
 parts/
 sdist/
 var/

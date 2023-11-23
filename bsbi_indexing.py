@@ -3,7 +3,7 @@ import json
 
 
 class BSBI_Indexer:
-    def __init__(self, doc_tokens: list, block_size: int = 100):
+    def __init__(self, doc_tokens: list, block_size: int = 20):
         self.block_size = block_size
         self.doc_tokens = doc_tokens
         self.block_paths = []
@@ -35,6 +35,16 @@ class BSBI_Indexer:
                     block.clear()
                     count2 = 0
 
-
     def merge_blocks(self):
-        pass
+        merged_block = dict()
+        for i in range(len(self.block_paths)):
+            with open(self.block_paths[i], 'r') as f:
+                temp_dic: dict = json.load(f)
+                for j in range(len(list(temp_dic.keys()))):
+                    if list(temp_dic.keys())[j] in merged_block.keys():
+                        merged_block[list(temp_dic.keys())[j]].extend(temp_dic[list(temp_dic.keys())[j]])
+                    else:
+                        merged_block[list(temp_dic.keys())[j]] = temp_dic[list(temp_dic.keys())[j]]
+        with open(".\\Blocks\\MergedBlock.txt", 'w') as f:
+            json.dump(merged_block, f)
+

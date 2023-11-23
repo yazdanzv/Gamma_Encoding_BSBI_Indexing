@@ -8,6 +8,13 @@ class GammaCoding:
         return gamma_code
 
     @staticmethod
+    def encode_list(lst: list):
+        code = ""
+        for i in range(len(lst)):
+            code += GammaCoding.encode(int(lst[i]))
+        return code
+
+    @staticmethod
     def decode(code):
         count = 0
         lst_binary = []

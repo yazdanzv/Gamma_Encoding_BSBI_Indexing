@@ -15,9 +15,15 @@ c = GammaCoding()  # Encode posting lists by gamma encoding method
 d, e = c.decode('1110001110101011111101101111011')  # Test of decode method
 print(d, e)  # Binary list and Decimal list (Compare the decimal list with the list below, results are the same)
 print(c.encode_list([9, 6, 3, 59, 7]))  # Test the list encoding method
+print("Final Merged Block")
 print(f)  # Print the final version of merged block
 g = Compress(f)  # Instance of Compress class
+g.build_gap_index()  # Build Gap index
+print("Gap Index")
+print(g.gap_index)  # Result of gap index
 g.compress()  # Compress the final version of merged block
+print("Final Coded Index")
 print(g.compressed_inverted_index)  # Show the compressed inverted index
 g.save_compress()  # saves the compressed inverted index on the disk
+
 
